@@ -1,0 +1,4 @@
+# The wiki is a content repository, not a Python project. The tools disable bytecode writing, and
+# this is the standard backstop for any invocation that slips past them.
+__pycache__/
+*.pyc
