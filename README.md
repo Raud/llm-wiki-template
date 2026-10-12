@@ -63,3 +63,9 @@ for external programs.
   `--fix` flag makes "I just ran the lint" a dangerous habit and muddies exit codes.
 - **Tools are optional.** Python 3.9+ with no dependencies, no venv. The wiki works without them; `lint` says so and
   exits cleanly rather than blocking anything.
+
+## License
+
+[MIT-0](LICENSE) — no attribution required. A template must not put a legal to-do in front of every copy of itself, and
+nothing here distinguishes "code" from "content": the tools, the contract, the templates and the skeleton are all under
+the same terms. Pages you write into your own copy are yours, under whatever terms you choose.
