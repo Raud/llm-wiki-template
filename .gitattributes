@@ -1,0 +1,23 @@
+# Line endings are pinned here rather than left to each machine's core.autocrlf:
+# a POSIX clone has to keep wiki.sh executable, and a Windows clone needs wiki.cmd
+# usable in cmd.exe. Without this, the same repository behaves differently depending
+# on who cloned it.
+
+# Default: content is LF in the repository, LF in every working tree.
+* text=auto eol=lf
+
+# cmd.exe wants CRLF, and is fine with it.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# The registries are diffed and appended to line by line; their byte form is a
+# contract (AGENTS.md §11), so they must never be rewritten in transit.
+*.jsonl text eol=lf
+
+# Binary by definition.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary
