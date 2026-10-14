@@ -1,9 +1,13 @@
 # wiki-template
 
-A domain-agnostic kernel for a **persistent knowledge wiki maintained by an LLM agent together with a human**.
+A domain-agnostic kernel for a **persistent knowledge wiki maintained by an LLM agent together with a human**. Raw
+sources are evidence and never change; pages are the product and are synthesized from them; every concrete claim on a
+page carries a citation you can open for yourself. So an agent's answer can be audited, and when the wiki is silent it
+says so instead of filling the gap from model memory — you can tell what it *found* from what it *invented*.
 
-The idea is simple: sources are evidence, pages are the product, and every concrete claim carries a citation. That
-makes the wiki re-verifiable instead of an opinion pile — and it lets an agent write into it without inventing facts.
+---
+
+Агент умеет прочитать что угодно и не помнит ничего. Это папка, в которой он может записать знание так, чтобы вы всё ещё могли его проверить: источники здесь — доказательства и не меняются, страницы собраны из них, а каждое утверждение несёт цитату, которую можно открыть и прочитать самому. Профит не в том, что агент знает больше, а в том, что вы видите разницу между тем, что он **нашёл**, и тем, что он **придумал** — и сегодня, и через год.
 
 ## Layout
 
