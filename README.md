@@ -1,39 +1,93 @@
-# wiki-template
+# llm-wiki-template
 
-A domain-agnostic kernel for a **persistent knowledge wiki maintained by an LLM agent together with a human**. Raw
-sources are evidence and never change; pages are the product and are synthesized from them; every concrete claim on a
-page carries a citation you can open for yourself. So an agent's answer can be audited, and when the wiki is silent it
-says so instead of filling the gap from model memory — you can tell what it *found* from what it *invented*.
+**Папка для базы знаний, которую ведёт ИИ-агент, — но каждый факт в ней снабжён цитатой, которую можно открыть.**
 
----
+Скачал → поговорил с агентом полчаса → складываешь знание, которое не разваливается через год и которое можно проверить,
+не спрашивая агента заново.
 
-Агент умеет прочитать что угодно и не помнит ничего. Это папка, в которой он может записать знание так, чтобы вы всё ещё могли его проверить: источники здесь — доказательства и не меняются, страницы собраны из них, а каждое утверждение несёт цитату, которую можно открыть и прочитать самому. Профит не в том, что агент знает больше, а в том, что вы видите разницу между тем, что он **нашёл**, и тем, что он **придумал** — и сегодня, и через год.
+## Что это
 
-## Layout
+Это не приложение и не сервис: **запускать нечего, кнопки нет**. Это папка с правилами и пустой вики, которую вы
+наполняете вдвоём с агентом — в чате, в редакторе, где вам удобно. Всё содержимое — обычные markdown-файлы и папка
+`raw/` с исходниками.
+
+Идея простая. Агент умеет прочитать что угодно и не помнит ничего. Эта папка — место, где он записывает найденное так,
+чтобы вы могли проверить: **источники здесь — доказательства и никогда не меняются**, страницы собраны из них, а каждое
+конкретное утверждение несёт цитату, которая открывается в исходнике на указанной строке.
+
+Профит не в том, что агент знает больше. Профит в том, что вы видите разницу между тем, что он **нашёл**, и тем, что он
+**придумал** — сегодня и через год. И если в базе ответа нет, агент обязан сказать «в базе этого нет», а не сочинить
+правдоподобное.
+
+## Для каких задач подходит
+
+- **Конспекты книг и лекций** — когда перечитывать источник не хочется, а «где это было сказано» нужно.
+- **Заметки по проекту**, где важно, откуда взялась цифра: «кто это решил, когда и на основании чего».
+- **Разбор интервью и созвонов**: кто что сказал — с цитатой, а не с пересказом по памяти.
+- **Семейное и бытовое знание**: рецепты, «как мы это делаем у нас дома», аптечка, сад, ремонт.
+- **Исследование по теме**, собранное из статей и ссылок: что утверждают источники и где они противоречат друг другу.
+- **Спойлерная база** по книге, сериалу или игре: факты отдельно от ваших впечатлений.
+
+**Когда не подходит.** Для быстрых заметок на салфетку — оверхед. Для планов и задач в работе — для этого есть `scratch/`,
+и это не знание. И если вы не готовы, что материал лежит на диске в открытом виде, — это не про секреты.
+
+## Как это выглядит
+
+Было — заметка, с которой всё началось (`raw/notes/pomodoro.md`):
 
 ```
-raw/                     immutable source material
-scratch/                 transient working documents — never evidence, never cited
-wiki/PROFILE.md          domain profile — the ONLY domain-specific file
-wiki/pages/              pages (flat)
-wiki/templates/          template palette (concept, howto, reference, open-questions, glossary)
-wiki/index/              registries: facts, sources, compaction decisions (all one record per line)
-wiki/tools/              launcher and tools: lint (checker), norm (formatter)
-AGENTS.md                operating contract (domain-agnostic, never edited per domain)
-BOOTSTRAP.md             the initializing prompt
+12  Помодоро: 25 минут работы, 5 минут отдыха. Придумал Франческо Чирилло в конце 1980-х.
+13  Название — от кухонного таймера в виде помидора.
 ```
 
-## Initialization
+Стало — страница (`wiki/pages/pomodoro.md`):
 
-Give `BOOTSTRAP.md` to an agent in a copy of this folder. It interviews you with six questions, writes
-`wiki/PROFILE.md`, creates the skeleton, and ingests one real item so the wiki never starts empty.
+```markdown
+## Facts
 
-## Quick workflow
+1. Техника «помодоро» — 25 минут работы и 5 минут отдыха — `raw/notes/pomodoro.md:12`
+2. Название техники происходит от кухонного таймера в виде помидора — `raw/notes/pomodoro.md:13`
 
-1. Drop a source into `raw/`.
-2. Ask the agent to ingest it — it updates pages, `index.md`, `index.jsonl`, and the logs.
-3. Ask questions; durable answers become pages.
-4. Run lint occasionally and review `wiki/logs/lint-report.json`.
+## Notes
+
+- Подходит только для задач, которые режутся на куски по 25 минут, — мои не режутся.
+```
+
+Каждая строка в `Facts` открывается в исходном файле — можно убедиться самому. Свои выводы и предпочтения живут в
+`Notes` и никогда не выдаются за факт. Это и есть весь трюк: **факт и мнение не лежат в одном разделе**, поэтому цитата
+чего-то стоит.
+
+## Как начать
+
+1. **Скачайте папку** — `Code → Download ZIP` на GitHub или `git clone`.
+2. **Откройте её агентом, который видит файлы.** Подойдёт Claude Projects (файлы загружаются в проект), Cursor, Claude
+   Code, ChatGPT с файлами. Важно: в обычном веб-чате папку агент не увидит — туда файлы надо приложить руками.
+3. **Скажите одну фразу:** «Прочитай `BOOTSTRAP.md` и инициализируй эту вики под мою задачу». Дальше он задаст
+   несколько вопросов о домене, источниках и языке — и создаст профиль и скелет.
+4. **Дайте первый реальный материал** — текст, файл, ссылку. Вики не должна остаться пустой: инициализация заканчивается
+   тем, что в неё загружен один настоящий источник. С этого момента можно работать.
+
+Дальше обычный цикл: положить источник в `raw/` → «загрузи это» → спросить что-нибудь → устойчивые ответы становятся
+страницами.
+
+## Что где лежит
+
+```
+raw/                     неизменяемые исходники — доказательства
+scratch/                 временные рабочие документы — никогда не цитируются и не считаются знанием
+wiki/PROFILE.md          профиль домена — единственный доменно-специфичный файл
+wiki/pages/              страницы (плоским списком)
+wiki/templates/          шаблоны страниц (concept, howto, reference, open-questions, glossary)
+wiki/index/              реестры: факты, источники, решения по чистке (по записи в строке)
+wiki/tools/              запуск и инструменты: lint (проверка) и norm (формат)
+AGENTS.md                рабочий контракт (доменно-нейтральный, не правится под домен)
+BOOTSTRAP.md             промпт инициализации
+```
+
+## Проверки (необязательно)
+
+Всё работает и без них: вики — это markdown. Инструменты нужны, чтобы ловить расхождения вроде битой цитаты или
+страницы, которой нет в оглавлении. Python 3.9+, без зависимостей.
 
 ```powershell
 .\wiki\tools\wiki.cmd lint
@@ -45,10 +99,10 @@ Give `BOOTSTRAP.md` to an agent in a copy of this folder. It interviews you with
 ./wiki/tools/wiki.sh norm --check wiki/index
 ```
 
-`norm` takes files or directories, so the same command works in every shell — PowerShell does not expand `*.jsonl`
-for external programs.
+`norm` принимает файлы или папки, поэтому команда одинакова в любой оболочке: PowerShell не раскрывает `*.jsonl` для
+внешних программ.
 
-## Design decisions worth knowing
+## Решения, которые стоит знать
 
 - **Flat pages, no numbering.** A path encodes stable identity only. Templates and status change over time; if they
   lived in the path, changing them would break every citation and inbound link.
@@ -67,6 +121,13 @@ for external programs.
   `--fix` flag makes "I just ran the lint" a dangerous habit and muddies exit codes.
 - **Tools are optional.** Python 3.9+ with no dependencies, no venv. The wiki works without them; `lint` says so and
   exits cleanly rather than blocking anything.
+
+## Abstract (EN)
+
+A domain-agnostic kernel for a **persistent knowledge wiki maintained by an LLM agent together with a human**. Raw
+sources are evidence and never change; pages are the product and are synthesized from them; every concrete claim on a
+page carries a citation you can open for yourself. So an agent's answer can be audited, and when the wiki is silent it
+says so instead of filling the gap from model memory — you can tell what it *found* from what it *invented*.
 
 ## License
 
