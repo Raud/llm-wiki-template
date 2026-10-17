@@ -1,5 +1,13 @@
 # llm-wiki-template
 
+> **This is an example branch.** The same template, initialized for the domain "book notes": book excerpts in `raw/`, four
+> pages with real citations, filled registries, a green `lint`. The template without a domain lives in `main`; the second
+> example, company IT infrastructure, is in `example/it-infra`. Change anything here: this is a demonstration, not a base.
+>
+> **All data is invented.** The book «Тихий час», its author, publisher and every quote do not exist: the content is made
+> up to show the shape of the pages. The citations are honest, though — they open lines of a file in `raw/`, and the
+> quoted text is really there.
+
 <!-- languages: this file is en, the Russian original is README.md -->
 [Русский](README.md) · **English**
 

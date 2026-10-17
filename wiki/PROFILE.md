@@ -7,51 +7,51 @@
 
 ## Domain
 
-_Not initialized._ Name and one-sentence purpose go here.
+Конспекты книг: что книга утверждает, и чем это подтверждается. Одна книга — один набор выписок в `raw/`, страницы
+собираются вокруг вопросов, а не вокруг глав.
 
 ## Readers
 
-_Not initialized._ Who reads this wiki: the owner alone, a team, agents, a mix.
+Владелец — один человек, который читает и конспектирует. Агент пишет страницы и отвечает по ним; другие люди читают
+редко и только по ссылке.
 
 ## Sources
 
-_Not initialized._ Table of source kinds, where they live, and the default retention for each.
-
 | Kind | Where | Default retention |
 |---|---|---|
-| | | |
+| Выписки из книги: цитаты с номерами страниц | `raw/books/` | `keep` |
+| Собственные заметки после чтения | `raw/books/` | `keep` |
+
+Заметки после чтения — тоже источник, но он даёт не факты, а мнение: их место в `Notes` и в `Open Questions`, не в
+`Facts`.
 
 ## Content language
 
-_Not initialized._ The language page content is written in. Service records stay English regardless.
+Русский. Служебные записи (`log.md`, реестры, front-matter) остаются английскими.
 
 ## Exclusions
 
-_Not initialized._ Anything that must never be stored here. Delete this section if there is nothing to exclude.
+Чужие личные данные, рабочие документы под NDA и что угодно, что нельзя показывать третьим лицам. Выписки — это
+цитаты из изданной книги, а не внутренние материалы.
 
 ## Knowledge boundary
 
-_Not initialized._ What the agent may use when the wiki itself is silent — see `AGENTS.md` §16.
-
-- `forbidden` — never use outside knowledge about this subject; say the wiki is silent and stop.
-- `ask` — offer, do not reveal, until the user says yes. Safe default for anything with spoilers.
-- `labeled` — answer, with the outside part visibly marked as not from this wiki.
-- `open` — answer normally.
-
-Whichever value is set, the absence of an answer is always stated plainly, and outside knowledge never becomes a page
-without a citation that can be opened.
+`ask`. Книги содержат спойлеры, а иногда и ответ на загадку, которую человек ещё читает: агент не пересказывает
+содержание за пределами выписок, не спросив. Если в вики ответа нет, он говорит это прямо и предлагает посмотреть
+вовне.
 
 ## Notes
 
-_Not initialized._ Anything else the agent must know about this domain — conventions, special cases, external systems
-the sources come from.
+- Номера страниц в выписках — по бумажному изданию 2024 года («Редкий шрифт»); в электронной версии они не совпадут
+  никогда, поэтому цитата всегда идёт с диапазоном строк файла выписок, а не только с номером страницы.
+- Одна книга — один конспект. Не сливаем две книги в одну страницу: тогда цитата перестаёт говорить, откуда она.
 
 ## Machine Config
 
 ```json
 {
-  "initialized": false,
-  "content_language": null,
+  "initialized": true,
+  "content_language": "ru",
   "external_subject": "ask",
   "pages_dir": "wiki/pages",
   "templates_dir": "wiki/templates",
@@ -59,9 +59,7 @@ the sources come from.
     "default_scheme": "file",
     "schemes": {
       "file": "^\\S+:\\d+(-\\d+)?$",
-      "note": "^note:[a-z0-9][a-z0-9._-]*$",
-      "url": "^url:https?://\\S+$",
-      "media": "^media:\\S+@\\d{1,2}:\\d{2}(:\\d{2})?$"
+      "url": "^url:https?://\\S+$"
     }
   },
   "reserved_sections": ["Source Excerpt"],

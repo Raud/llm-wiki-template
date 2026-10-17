@@ -1,15 +1,16 @@
-# Wiki Index
+# Index — «Тихий час»
 
-Curated catalog of pages. **Grouping and order live here — not in filenames.** Every page must be listed; every entry
-points to a page that exists.
+Конспект книги Ольги Ковалёвой «Тихий час. Как вернуть внимание команде» («Редкий шрифт», 2024). Выписки живут в
+`raw/books/tihiy-chas-vypiski.md`, личные заметки после чтения — в `raw/books/tihiy-chas-zametki.md`.
 
-_Not initialized._ `BOOTSTRAP.md` replaces this placeholder with sections for the templates this domain actually uses,
-under the domain's own title.
+Группировка и порядок живут здесь, не в именах файлов.
 
-## Open Questions
+## Идеи из книги
 
-- [Open questions](pages/open-questions.md) — what we do not know yet
+- [Глубокий час](pages/deep-hour.md) — что это такое по книге, из чего состоит правило и чем оно обходится
+- [Как провести глубокий час](pages/run-a-deep-hour.md) — условия, порядок шагов и что ломается на практике
 
-## Glossary
+## Справочное
 
-- [Glossary](pages/glossary.md) — vocabulary of this domain
+- [Open Questions](pages/open-questions.md) — что книга оставила открытым
+- [Glossary](pages/glossary.md) — слова, которые в книге значат не совсем то же, что в обычной речи
