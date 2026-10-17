@@ -7,61 +7,63 @@
 
 ## Domain
 
-_Not initialized._ Name and one-sentence purpose go here.
+IT-инфраструктура компании «Северный Ветер»: что у нас есть, как это обслуживается и откуда мы это знаем. Не учебник по
+PostgreSQL и не зеркало документации — то, что нужно ночью, когда что-то сломалось.
 
 ## Readers
 
-_Not initialized._ Who reads this wiki: the owner alone, a team, agents, a mix.
+Команда эксплуатации, четыре человека, и дежурный, который может быть из них любым. Агент читает эту базу первой и отвечает
+дежурному; другие команды заходят по ссылке.
 
 ## Sources
 
-_Not initialized._ Table of source kinds, where they live, and the default retention for each.
-
 | Kind | Where | Default retention |
 |---|---|---|
-| | | |
+| Выписка из чата инцидента | `raw/infra/` | `embed_remove` |
+| Рунбук (одна редакция — один файл) | `raw/infra/` | `keep` |
+| Выгрузка инвентарного учёта | `raw/infra/` | `keep` |
+
+Выписка чата — `embed_remove`: после того как разговор перенесён на страницы (в том числе дословно, в раздел
+`## Source Excerpt`), копию чата можно удалить. Цитаты при этом не должны сломаться — их перевешивают на страницу.
 
 ## Content language
 
-_Not initialized._ The language page content is written in. Service records stay English regardless.
+Русский. Служебные записи (`log.md`, реестры, front-matter) остаются английскими.
 
 ## Exclusions
 
-_Not initialized._ Anything that must never be stored here. Delete this section if there is nothing to exclude.
+Пароли, ключи, токены, приватные адреса за пределами `10.10.0.0/16`, персональные данные клиентов. Правило простое: если
+сомневаешься — не пиши, репозиторий читают все, у кого есть доступ.
 
 ## Knowledge boundary
 
-_Not initialized._ What the agent may use when the wiki itself is silent — see `AGENTS.md` §16.
-
-- `forbidden` — never use outside knowledge about this subject; say the wiki is silent and stop.
-- `ask` — offer, do not reveal, until the user says yes. Safe default for anything with spoilers.
-- `labeled` — answer, with the outside part visibly marked as not from this wiki.
-- `open` — answer normally.
-
-Whichever value is set, the absence of an answer is always stated plainly, and outside knowledge never becomes a page
-without a citation that can be opened.
+`forbidden`. Это собственная инфраструктура: если в базе чего-то нет, значит этого нет. Агент не додумывает ни порты, ни
+пути, ни адреса и не подставляет «как обычно бывает в таких системах» — он говорит, что в базе этого нет, и предлагает
+посмотреть инвентарь или рунбук. Догадка здесь дороже молчания.
 
 ## Notes
 
-_Not initialized._ Anything else the agent must know about this domain — conventions, special cases, external systems
-the sources come from.
+- Конфликт редакций рунбука — нормальное состояние, а не ошибка ингеста: обе редакции сохранены, конфликт помечен в
+  `wiki/index/index.jsonl`, разрешает его человек документом, а не агент разговором.
+- Скриншот из чата, у которого нет строк, регистрируется как источник и цитируется схемой `note:`, когда цитировать строку
+  не из чего.
+- Рабочие документы на время разбора инцидента можно держать в `scratch/` — но то, что должно быть верно завтра, идёт на
+  страницы, а не туда.
 
 ## Machine Config
 
 ```json
 {
-  "initialized": false,
-  "content_language": null,
-  "external_subject": "ask",
+  "initialized": true,
+  "content_language": "ru",
+  "external_subject": "forbidden",
   "pages_dir": "wiki/pages",
   "templates_dir": "wiki/templates",
   "citation": {
     "default_scheme": "file",
     "schemes": {
       "file": "^\\S+:\\d+(-\\d+)?$",
-      "note": "^note:[a-z0-9][a-z0-9._-]*$",
-      "url": "^url:https?://\\S+$",
-      "media": "^media:\\S+@\\d{1,2}:\\d{2}(:\\d{2})?$"
+      "note": "^note:[a-z0-9][a-z0-9._-]*$"
     }
   },
   "reserved_sections": ["Source Excerpt"],

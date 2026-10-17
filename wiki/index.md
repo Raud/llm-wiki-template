@@ -1,15 +1,14 @@
-# Wiki Index
+# Index — «Северный Ветер», инфраструктура
 
-Curated catalog of pages. **Grouping and order live here — not in filenames.** Every page must be listed; every entry
-points to a page that exists.
+Что у нас есть, как это обслуживается и откуда мы это знаем. Группировка и порядок живут здесь, не в именах файлов.
 
-_Not initialized._ `BOOTSTRAP.md` replaces this placeholder with sections for the templates this domain actually uses,
-under the domain's own title.
+## Системы и процедуры
 
-## Open Questions
+- [Серверы](pages/servers.md) — инвентарь хостов: что за машина, зачем она и где это записано
+- [Политика резервного копирования](pages/backup-policy.md) — две редакции рунбука и помеченный конфликт между ними
+- [Как восстановить из бэкапа](pages/restore-a-backup.md) — процедура по действующей редакции и чем она отличается от старой
 
-- [Open questions](pages/open-questions.md) — what we do not know yet
+## Справочное
 
-## Glossary
-
-- [Glossary](pages/glossary.md) — vocabulary of this domain
+- [Open Questions](pages/open-questions.md) — что неизвестно или не решено
+- [Glossary](pages/glossary.md) — слова, которые в чате и в рунбуках значат одно и то же, а звучат по-разному

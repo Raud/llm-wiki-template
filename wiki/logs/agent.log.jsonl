@@ -1,0 +1,1 @@
+{"ts":"2026-10-17T11:53:42Z","run_id":"a10a748b5b03","agent":"wiki-keeper","operation":"lint","status":"ok","inputs":{"tool":"wiki/tools/wiki_lint.py","profile":"wiki/PROFILE.md"},"outputs":{"report":"wiki/logs/lint-report.json"},"notes":"pages=5 facts=34 sources=4 errors=0 warnings=0"}

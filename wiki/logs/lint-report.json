@@ -1,0 +1,37 @@
+{
+  "ts": "2026-10-17T11:53:42Z",
+  "status": "ok",
+  "errors": [],
+  "warnings": [],
+  "template_suggestions": [],
+  "source_queue": {
+    "status": {
+      "active": 4
+    },
+    "retention": {
+      "embed_remove": 1,
+      "keep": 3
+    },
+    "compaction_candidates": []
+  },
+  "metrics": {
+    "pages": 5,
+    "templates": 5,
+    "facts": 34,
+    "sources": 4,
+    "decisions": 0,
+    "errors": 0,
+    "warnings": 0,
+    "template_suggestions": 0
+  },
+  "checked_paths": [
+    "wiki/PROFILE.md",
+    "wiki/templates",
+    "wiki/pages",
+    "wiki/index.md",
+    "wiki/index/index.jsonl",
+    "wiki/index/sources.jsonl",
+    "wiki/index/decisions.jsonl"
+  ],
+  "summary": "Wiki lint completed: structure, citations, index integrity, singletons, source queue, and template gaps were checked."
+}

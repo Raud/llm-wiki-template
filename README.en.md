@@ -1,5 +1,17 @@
 # llm-wiki-template
 
+> **This is an example branch.** The same template, initialized for the domain "company IT infrastructure": an incident chat
+> excerpt, two editions of a runbook, an inventory export, five pages and 34 cited facts, a green `lint`. The second example
+> built on the same kernel is `example/books` (book notes); the template without a domain lives in `main`. Change anything.
+>
+> **All data is invented.** The company «Северный Ветер», its servers, chat and runbooks do not exist: addresses, ports and
+> wording are made up to show the shape of the pages. The citations are honest, though — they open lines of files in
+> `raw/`, and the quoted text is really there.
+>
+> **Where to start looking:** `wiki/pages/backup-policy.md` — two runbook editions contradict each other, both are kept, the
+> conflict is marked and was not resolved by the agent. And `external_subject: forbidden` in the profile: the agent does not
+> guess about its own infrastructure, it says "the base has nothing on this".
+
 <!-- languages: this file is en, the Russian original is README.md -->
 [Русский](README.md) · **English**
 
