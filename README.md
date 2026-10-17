@@ -157,26 +157,6 @@ BOOTSTRAP.md             промпт инициализации
 `norm` принимает файлы или папки, поэтому команда одинакова в любой оболочке: PowerShell не раскрывает `*.jsonl` для
 внешних программ.
 
-## Решения, которые стоит знать
-
-- **Flat pages, no numbering.** A path encodes stable identity only. Templates and status change over time; if they
-  lived in the path, changing them would break every citation and inbound link.
-- **`scratch/` is deliberately not a second wiki.** Working documents — a fix plan, a breakdown, a task in progress —
-  need to survive between sessions without pretending to be knowledge: no citations, no templates, no index, no lint.
-  Nothing there is evidence, and whether anything ever leaves it is the domain's decision, not the kernel's.
-- **Facts and interpretation never share a section.** Each template declares which sections are evidentiary (citations
-  required) and which are synthesis.
-- **Nothing is deleted without re-pointing its citations.** Source cleanup is a two-phase, all-or-nothing, logged
-  operation.
-- **The template palette grows from use.** A quiet collector watches for repeated structure and for sections that are
-  never filled, and proposes changes only past a threshold.
-- **One registry format, one canonical shape.** Every `*.jsonl` file is one record per line: streamable, recoverable
-  after a truncated write, and diffable line by line.
-- **The checker and the formatter are separate tools.** `lint` never writes; `norm` canonicalizes. A mutation behind a
-  `--fix` flag makes "I just ran the lint" a dangerous habit and muddies exit codes.
-- **Tools are optional.** Python 3.9+ with no dependencies, no venv. The wiki works without them; `lint` says so and
-  exits cleanly rather than blocking anything.
-
 ## Abstract (EN)
 
 A domain-agnostic kernel for a **persistent knowledge wiki maintained by an LLM agent together with a human**. Raw
