@@ -1,5 +1,8 @@
 # llm-wiki-template
 
+<!-- languages: this file is ru, the English mirror is README.en.md -->
+**Русский** · [English](README.en.md)
+
 **Папка для базы знаний, которую ведёт ИИ-агент, — но каждый факт в ней снабжён цитатой, которую можно открыть.**
 
 Скачал → поговорил с агентом полчаса → складываешь знание, которое не разваливается через год и которое можно проверить,
@@ -156,13 +159,6 @@ BOOTSTRAP.md             промпт инициализации
 
 `norm` принимает файлы или папки, поэтому команда одинакова в любой оболочке: PowerShell не раскрывает `*.jsonl` для
 внешних программ.
-
-## Abstract (EN)
-
-A domain-agnostic kernel for a **persistent knowledge wiki maintained by an LLM agent together with a human**. Raw
-sources are evidence and never change; pages are the product and are synthesized from them; every concrete claim on a
-page carries a citation you can open for yourself. So an agent's answer can be audited, and when the wiki is silent it
-says so instead of filling the gap from model memory — you can tell what it *found* from what it *invented*.
 
 ## License
 
